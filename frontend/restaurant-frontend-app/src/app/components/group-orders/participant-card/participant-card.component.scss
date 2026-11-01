@@ -1,0 +1,257 @@
+@use '../../../shared/styles/abstracts/colors' as color;
+
+:host {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  min-width: 0;
+}
+
+.participant-card {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid color.$neutral-200;
+  border-radius: 18px;
+  background: color.$neutral-0;
+  box-shadow: 0 4px 18px rgb(35 35 35 / 5%);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 76px;
+  padding: 14px 20px;
+  border-bottom: 1px solid color.$neutral-200;
+}
+
+.participant-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.card-header-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.avatar,
+.dish-placeholder {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: color.$sage-100;
+  color: color.$green-800;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+h2 {
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+}
+
+.cart-status {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 7px;
+  border-radius: 999px;
+  padding: 6px 11px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.cart-status--submitted {
+  background: color.$green-100;
+  color: color.$green-800;
+}
+
+.cart-status--pending {
+  background: color.$neutral-100;
+  color: color.$neutral-600;
+}
+
+.remove-guest-link {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: color.$green-600;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.remove-guest-link:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid color.$green-600;
+  outline-offset: 3px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 12px 20px 16px;
+}
+
+.dish-list {
+  flex: 1;
+  list-style: none;
+}
+
+.dish-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  border-bottom: 1px solid color.$neutral-100;
+}
+
+.dish-select {
+  display: flex;
+  grid-column: 1;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.dish-select:focus-visible {
+  border-radius: 22px;
+  outline: 2px solid color.$green-600;
+  outline-offset: 3px;
+}
+
+.dish-image,
+.dish-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dish-name {
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.dish-quantity {
+  color: color.$neutral-600;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.dish-price {
+  min-width: 58px;
+  color: color.$green-800;
+  font-size: 13px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.empty-cart {
+  padding: 16px 0;
+  color: color.$neutral-600;
+  font-size: 14px;
+}
+
+.card-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 14px;
+}
+
+.card-total strong {
+  color: color.$green-800;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 430px) {
+  .card-header {
+    align-items: flex-start;
+    padding: 14px;
+  }
+
+  .participant-heading {
+    gap: 8px;
+  }
+
+  h2 {
+    font-size: 14px;
+  }
+
+  .cart-status {
+    gap: 5px;
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .card-content {
+    padding-inline: 14px;
+  }
+
+  .dish-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 8px;
+    padding-block: 7px;
+  }
+
+  .dish-select {
+    column-gap: 8px;
+    grid-column: 1;
+  }
+
+  .dish-quantity {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .dish-price {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    margin-top: -6px;
+  }
+}

@@ -1,0 +1,142 @@
+@use 'app/shared/styles/abstracts/colors' as color;
+
+.not-submitted-order {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.empty-order-hint {
+  margin: 0;
+  color: color.$neutral-600;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.add-dish-btn {
+  align-self: stretch;
+  width: 100%;
+  min-height: 40px;
+  padding-inline: 12px;
+  text-decoration: none;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.discard-empty-order-btn {
+  align-self: flex-start;
+}
+
+.group-pre-order-btn {
+  width: 100%;
+}
+
+.order-item-dish {
+  display: flex;
+  flex-direction: row;
+  padding: 24px;
+  gap: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 4px rgba(194, 194, 194, 0.5);
+}
+
+.dish-image {
+  min-width: 96px;
+  height: 96px;
+  border-radius: 400px;
+  box-shadow: 0 0 10px 4px rgba(194, 194, 194, 0.5);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dish-name {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.quantity-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.quantity-buttons .value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 12px;
+  line-height: 1;
+}
+
+
+.total {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 16px;
+}
+
+.body {
+  font-size: 14px;
+  letter-spacing: 0;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+.body-bold {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+.caption {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}

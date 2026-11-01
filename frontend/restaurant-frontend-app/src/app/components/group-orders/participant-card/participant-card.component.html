@@ -1,0 +1,73 @@
+<article class="participant-card">
+  <header class="card-header">
+    <div class="participant-heading">
+      <span class="avatar" aria-hidden="true">{{ participant().name.slice(0, 1) }}</span>
+      <h2>{{ title() }}</h2>
+    </div>
+    <div class="card-header-actions">
+      <span
+        class="cart-status"
+        [class.cart-status--submitted]="participant().isSubmitted"
+        [class.cart-status--pending]="!participant().isSubmitted"
+        role="status"
+        [attr.aria-label]="'Cart status: ' + statusLabel()"
+      >
+        <span class="status-dot" aria-hidden="true"></span>
+        {{ statusLabel() }}
+      </span>
+      @if (canRemove() && participant().type === 'Guest') {
+        <button
+          class="remove-guest-link"
+          type="button"
+          [attr.aria-label]="'Remove ' + participant().name"
+          (click)="removeClick.emit(participant())"
+        >
+          Remove Guest
+        </button>
+      }
+    </div>
+  </header>
+
+  <div class="card-content">
+    @if (participant().items.length > 0) {
+      <ul class="dish-list" aria-label="Pre-order dishes">
+        @for (item of participant().items; track item.dish.id) {
+          <li class="dish-row">
+            <button
+              class="dish-select"
+              type="button"
+              (click)="openDish(item.dish)"
+              [attr.aria-label]="'View details for ' + item.dish.name"
+            >
+              @if (item.dish.imageUrl) {
+                <img
+                  class="dish-image"
+                  [src]="item.dish.imageUrl"
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              } @else {
+                <span class="dish-placeholder" aria-hidden="true">{{ item.dish.name.slice(0, 1) }}</span>
+              }
+              <span class="dish-name">{{ item.dish.name }}</span>
+            </button>
+            <span class="dish-quantity" [attr.aria-label]="'Quantity ' + item.quantity">×{{ item.quantity }}</span>
+            <span class="dish-price">{{ item.dish.price * item.quantity | currency: 'USD' }}</span>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="empty-cart">No dishes yet</p>
+    }
+
+    <div class="card-total">
+      <span>Subtotal</span>
+      <strong>{{ participant().total | currency: 'USD' }}</strong>
+    </div>
+  </div>
+</article>
+
+@if (selectedDish(); as dishDetails) {
+  <app-dish-modal [dish]="dishDetails" (closed)="closeDish()" />
+}

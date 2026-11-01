@@ -1,0 +1,40 @@
+# IDE / editor
+.idea/
+.vscode/
+*.iml
+*.code-workspace
+
+# OS
+.DS_Store
+._*
+Thumbs.db
+
+# Node
+node_modules/
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+
+# Python virtual environments
+.venv/
+venv/
+syndicate_venv/
+
+# Syndicate generated files and local configuration
+backend/restaurant-backend-app/.syndicate-config-restaurant-backend-app/.syndicate
+backend/restaurant-backend-app/.syndicate-config-restaurant-backend-app/logs/
+backend/restaurant-backend-app/.syndicate-config-restaurant-backend-app/bundles/
+backend/restaurant-backend-app/.syndicate-config-restaurant-backend-app/syndicate.yml
+backend/restaurant-backend-app/.syndicate-config-restaurant-backend-app/syndicate_aliases.yml
+
+# Local environment files
+.env
+.env.local
+.env.*
+!.env.example

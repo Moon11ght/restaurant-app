@@ -1,0 +1,56 @@
+<main class="page-main">
+  <section class="group-order" aria-labelledby="group-order-title">
+    <header class="order-header">
+      <div class="title-row">
+        <div>
+          <p class="eyebrow">Green &amp; Tasty</p>
+          <h1 id="group-order-title">Group Pre-Order</h1>
+        </div>
+        <span class="created-badge">Created New Pre-Order</span>
+      </div>
+
+      <ul class="reservation-details" aria-label="Reservation details">
+        <li>
+          <span class="detail-icon" aria-hidden="true">⌖</span>
+          <span>{{ groupOrder.invite.LocationAddress }}</span>
+        </li>
+        <li>
+          <span class="detail-icon" aria-hidden="true">▦</span>
+          <span>{{ groupOrder.invite.StartTime | date: 'MMM d, y':'UTC' }}</span>
+        </li>
+        <li>
+          <span class="detail-icon" aria-hidden="true">◷</span>
+          <span>
+            {{ groupOrder.invite.StartTime | date: 'h:mm a':'UTC' }} –
+            {{ groupOrder.invite.EndTime | date: 'h:mm a':'UTC' }}
+          </span>
+        </li>
+        <li>
+          <span class="detail-icon" aria-hidden="true">♧</span>
+          <span>{{ groupOrder.sessions.participants.length }} of {{ groupOrder.invite.MaxGuestCount }} guests</span>
+        </li>
+      </ul>
+    </header>
+
+    <p class="review-note">
+      <span class="note-icon" aria-hidden="true">♧</span>
+      Review each participant’s pre-order before submitting the group order.
+    </p>
+
+    <ul class="participant-list" aria-label="Group participants">
+      @for (participant of groupOrder.sessions.participants; track participant.id) {
+        <li>
+          <app-participant-card [participant]="participant" />
+        </li>
+      }
+    </ul>
+
+    <footer class="order-footer">
+      <div class="grand-total">
+        <span>Grand Total</span>
+        <strong>{{ groupOrder.sessions.total | currency: 'USD' }}</strong>
+      </div>
+      <button class="submit-button" type="button">Submit Pre-Order</button>
+    </footer>
+  </section>
+</main>
